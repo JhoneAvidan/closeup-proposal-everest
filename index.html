@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הצעת מחיר · CloseUp CRM · אוורסט מודולר</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A1638;
+    --ink:#0A0F1F;
+    --focus:#1E6BFF;
+    --sky:#6BA4FF;
+    --mist:#C9D6EE;
+    --slate:#5B6779;
+    --line:#E4E9F2;
+    --paper:#F6F8FC;
+    --white:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Heebo','Inter',sans-serif;
+    background:var(--paper);
+    color:var(--navy);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  h1,h2,h3,.display{font-family:'Montserrat','Heebo',sans-serif;font-weight:800;letter-spacing:-.01em;line-height:1.12}
+  .accent{color:var(--focus)}
+  .eyebrow{
+    font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--focus);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;background:var(--navy);color:#fff;overflow:hidden;
+    padding:72px 0 96px;
+  }
+  #field{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.9}
+  .hero .wrap{position:relative;z-index:2}
+  .brandbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:64px}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo .mark{
+    width:38px;height:38px;position:relative;flex-shrink:0;
+  }
+  .logo .mark svg{width:100%;height:100%;display:block}
+  .logo .wordmark{font-family:'Montserrat',sans-serif;font-weight:800;font-size:22px;line-height:1;color:#fff;letter-spacing:-.02em}
+  .logo .wordmark b{color:var(--sky)}
+  .logo .sub{font-size:9px;letter-spacing:.28em;color:var(--mist);font-weight:600;margin-top:3px}
+  .doc-tag{font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mist);text-align:left}
+
+  .hero h1{font-size:clamp(40px,6.4vw,68px);color:#fff;margin-bottom:22px}
+  .hero h1 .accent{color:var(--focus)}
+  .hero .lead{font-size:19px;color:var(--mist);max-width:560px;font-weight:400}
+  .hero .for{
+    display:inline-flex;align-items:center;gap:10px;margin-top:36px;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+    padding:12px 20px;border-radius:100px;font-size:14px;color:#dfe7f7;backdrop-filter:blur(4px)
+  }
+  .hero .for b{color:#fff;font-weight:700}
+  .hero .for .dot{width:7px;height:7px;border-radius:50%;background:var(--focus);box-shadow:0 0 12px var(--focus)}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:74px 0}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  .sec-head{margin-bottom:40px}
+  .sec-head h2{font-size:clamp(28px,4vw,40px);margin:14px 0 12px}
+  .sec-head p{color:var(--slate);font-size:16px;max-width:600px}
+
+  /* intro */
+  .intro{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .intro p{font-size:17.5px;color:#2a3550;max-width:720px;margin-bottom:18px}
+  .intro p:last-child{margin-bottom:0}
+  .intro strong{color:var(--navy);font-weight:700}
+
+  /* value / convergence */
+  .value{background:var(--paper)}
+  .diagram{
+    background:#fff;border:1px solid var(--line);border-radius:20px;
+    padding:30px 28px;margin-bottom:36px;box-shadow:0 30px 60px -44px rgba(10,22,56,.4)
+  }
+  .diagram svg{width:100%;height:auto;display:block;overflow:visible}
+  .dg-mobile{display:none}
+  .dg-node{font-family:'Heebo','Inter',sans-serif}
+  .dg-label{font-family:'Heebo','Inter',sans-serif;font-weight:700;font-size:16px;fill:var(--navy)}
+  .dg-hub{font-family:'Montserrat','Heebo',sans-serif;font-weight:800;font-size:26px;fill:#fff}
+  .dg-cap{font-family:'Heebo','Inter',sans-serif;font-weight:500;font-size:13px;fill:var(--slate)}
+  .dg-out{font-family:'Heebo','Inter',sans-serif;font-weight:800;font-size:16px;fill:#1c8a54}
+  .cv-flow{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-dasharray:5 10;animation:flow 1.1s linear infinite}
+  @keyframes flow{to{stroke-dashoffset:-30}}
+  @media(max-width:620px){
+    .dg-desktop{display:none}
+    .dg-mobile{display:block}
+    .diagram{padding:22px 16px}
+  }
+  .pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .pillar{display:flex;gap:16px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;transition:transform .3s ease,box-shadow .3s ease}
+  .pillar:hover{transform:translateY(-3px);box-shadow:0 18px 40px -26px rgba(10,22,56,.4)}
+  .pillar .pn{
+    font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;color:var(--focus);
+    width:40px;height:40px;flex-shrink:0;border-radius:11px;background:#eef4ff;
+    display:flex;align-items:center;justify-content:center
+  }
+  .pillar h3{font-size:16.5px;margin-bottom:6px;font-family:'Heebo',sans-serif;font-weight:700}
+  .pillar p{font-size:14px;color:var(--slate);line-height:1.65}
+
+  /* capacity strip */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .stat{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 20px;text-align:center;
+    position:relative;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease
+  }
+  .stat:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(10,22,56,.35)}
+  .stat .num{font-family:'Montserrat',sans-serif;font-weight:800;font-size:34px;color:var(--navy);line-height:1}
+  .stat .num small{font-size:17px;color:var(--focus)}
+  .stat .lbl{font-size:13px;color:var(--slate);margin-top:8px;font-weight:500}
+
+  /* features */
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .feat{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;
+    transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease
+  }
+  .feat:hover{transform:translateY(-4px);box-shadow:0 20px 44px -26px rgba(10,22,56,.4);border-color:var(--mist)}
+  .feat .ic{
+    width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#eef4ff,#dbe8ff);margin-bottom:16px
+  }
+  .feat .ic svg{width:22px;height:22px;stroke:var(--focus);fill:none;stroke-width:1.8}
+  .feat h3{font-size:16px;font-weight:700;margin-bottom:6px;font-family:'Heebo',sans-serif}
+  .feat p{font-size:13.5px;color:var(--slate);line-height:1.6}
+
+  /* pricing */
+  .price-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:stretch}
+  .card{border-radius:22px;padding:38px 34px;position:relative;overflow:hidden}
+  .card.main{
+    background:linear-gradient(160deg,#0A1638 0%,#122253 100%);color:#fff;
+    box-shadow:0 40px 80px -40px rgba(10,22,56,.7)
+  }
+  .card.main::before{
+    content:"";position:absolute;top:-40%;left:-20%;width:340px;height:340px;
+    background:radial-gradient(circle,rgba(30,107,255,.5),transparent 70%);filter:blur(10px)
+  }
+  .card.main >*{position:relative;z-index:1}
+  .card .tier{font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--sky)}
+  .card.main h3{font-size:26px;margin:8px 0 4px;color:#fff}
+  .card.main .desc{color:var(--mist);font-size:14.5px;margin-bottom:26px}
+  .price{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}
+  .price .cur{font-size:26px;font-weight:700;font-family:'Montserrat',sans-serif;color:#fff}
+  .price .amt{font-size:60px;font-weight:800;font-family:'Montserrat',sans-serif;color:#fff;line-height:.9}
+  .price .per{font-size:15px;color:var(--mist)}
+  .price-note{font-size:13px;color:var(--sky);margin-bottom:26px;font-weight:600}
+  .inc{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .inc li{display:flex;align-items:flex-start;gap:11px;font-size:14.5px;color:#e7edfb}
+  .inc li svg{width:19px;height:19px;flex-shrink:0;margin-top:2px}
+  .inc li b{color:#fff;font-weight:700}
+
+  /* add-on card */
+  .card.addon{background:#fff;border:1px solid var(--line);display:flex;flex-direction:column}
+  .card.addon .opt-badge{
+    align-self:flex-start;background:#eef4ff;color:var(--focus);font-size:11px;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:100px;margin-bottom:16px;font-family:'Montserrat',sans-serif
+  }
+  .card.addon h3{font-size:22px;color:var(--navy);margin-bottom:4px}
+  .card.addon .desc{color:var(--slate);font-size:14px;margin-bottom:22px}
+  .card.addon .price .cur,.card.addon .price .amt{color:var(--navy)}
+  .card.addon .price .per{color:var(--slate)}
+  .card.addon .inc li{color:#3a465e}
+  .card.addon .inc li b{color:var(--navy)}
+  .addon-extra{margin-top:auto;padding-top:22px;border-top:1px dashed var(--line);font-size:13px;color:var(--slate)}
+  .addon-extra b{color:var(--focus)}
+
+  /* summary table */
+  .summary{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:right;padding:17px 26px;font-size:15px}
+  thead th{background:var(--navy);color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px;letter-spacing:.05em}
+  tbody tr{border-top:1px solid var(--line)}
+  tbody tr:nth-child(even){background:var(--paper)}
+  td.item{font-weight:600;color:var(--navy)}
+  td.sub{color:var(--slate);font-size:13.5px}
+  td.amt{text-align:left;font-family:'Montserrat',sans-serif;font-weight:700;color:var(--navy);white-space:nowrap}
+  .opt-tag{font-size:11px;color:var(--focus);background:#eef4ff;padding:2px 9px;border-radius:100px;margin-inline-start:8px;font-weight:600}
+  tr.total{background:var(--navy)!important}
+  tr.total td{color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px;padding-top:20px;padding-bottom:20px}
+  tr.total td.amt{color:var(--sky);font-size:20px}
+
+  /* closing / cta */
+  .cta{background:var(--navy);color:#fff;position:relative;overflow:hidden;text-align:center}
+  .cta::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 120%,rgba(30,107,255,.35),transparent 60%)}
+  .cta .wrap{position:relative;z-index:1}
+  .cta h2{font-size:clamp(28px,4vw,42px);color:#fff;margin-bottom:16px}
+  .cta h2 .accent{color:var(--sky)}
+  .cta p{color:var(--mist);font-size:17px;max-width:520px;margin:0 auto 34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;background:var(--focus);color:#fff;
+    font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px;text-decoration:none;
+    padding:16px 34px;border-radius:100px;transition:transform .25s ease,box-shadow .25s ease;
+    box-shadow:0 14px 34px -12px rgba(30,107,255,.7)
+  }
+  .btn:hover{transform:translateY(-3px);box-shadow:0 20px 44px -12px rgba(30,107,255,.8)}
+  .validity{margin-top:26px;font-size:13px;color:var(--slate)}
+
+  /* footer */
+  footer{background:var(--ink);color:var(--mist);padding:40px 0;font-size:13px}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+  footer .logo .wordmark{font-size:18px}
+  footer .fnote{color:var(--slate)}
+
+  @media(max-width:760px){
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .feat-grid{grid-template-columns:1fr}
+    .price-wrap{grid-template-columns:1fr}
+    .pillars{grid-template-columns:1fr}
+    .brandbar{margin-bottom:44px}
+    section{padding:54px 0}
+    th,td{padding:14px 16px;font-size:13.5px}
+  }
+  @media(max-width:520px){
+    .wrap{padding:0 18px}
+    .stats{grid-template-columns:1fr}
+    .card{padding:30px 24px}
+    .pillar{padding:20px;gap:13px}
+    .price .amt{font-size:52px}
+    .diagram{padding:20px 14px}
+    footer .wrap{flex-direction:column;align-items:flex-start;text-align:right}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <canvas id="field"></canvas>
+  <div class="wrap">
+    <div class="brandbar">
+      <div class="logo">
+        <div class="mark">
+          <svg viewBox="0 0 40 40" aria-hidden="true">
+            <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#1E6BFF"/><stop offset="1" stop-color="#6BA4FF"/>
+            </linearGradient></defs>
+            <path d="M20 4 C30 4 36 11 36 20 C36 29 30 36 20 36 C22 30 22 26 20 20 C18 26 18 30 20 36 C10 36 4 29 4 20 C4 11 10 4 20 4 Z" fill="url(#lg)"/>
+            <circle cx="14" cy="20" r="3.4" fill="#0A1638"/>
+            <circle cx="9" cy="15" r="1.1" fill="#6BA4FF"/><circle cx="7" cy="20" r="1.1" fill="#fff"/>
+            <circle cx="9" cy="25" r="1.1" fill="#6BA4FF"/><circle cx="12" cy="12" r="1" fill="#fff"/>
+            <circle cx="12" cy="28" r="1" fill="#fff"/>
+          </svg>
+        </div>
+        <div>
+          <div class="wordmark">CloseUp<b>.</b></div>
+          <div class="sub">AI-POWERED CRM</div>
+        </div>
+      </div>
+      <div class="doc-tag">הצעת מחיר<br>2026</div>
+    </div>
+
+    <div class="eyebrow reveal">Bring every signal into focus</div>
+    <h1 class="reveal">כל אינטראקציה עם לקוח,<br>במקום <span class="accent">אחד ברור.</span></h1>
+    <p class="lead reveal">CloseUp CRM מרכז את כל נקודות המגע עם הלקוחות שלכם — שיחות, הודעות, לידים וכוונות רכישה — ומעביר אותן דרך שכבת בינה מלאכותית שהופכת רעש לתמונה חדה של כל מערכת יחסים.</p>
+
+    <div class="for reveal">
+      <span class="dot"></span>
+      <span>הוכן עבור <b>אליק</b> · <b>אוורסט מודולר</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ INTRO ============ -->
+<section class="intro">
+  <div class="wrap reveal">
+    <div class="eyebrow" style="margin-bottom:14px">פתח דבר</div>
+    <p>היי אליק, בהמשך לשיחתנו בנוגע לניהול הלידים ותהליכי המכירה באוורסט מודולר — ריכזנו כאן הצעה שנבנתה בדיוק סביב הצרכים שעלו. הבנו שיש הרבה פניות שזורמות במקביל, ושכל ליד שנופל בין הכיסאות הוא הזדמנות אמיתית שהולכת לאיבוד; בדיוק שם מערכת מסודרת עושה את ההבדל.</p>
+    <p>בנינו את ההצעה סביב <strong>מסלול Business</strong> — המסלול המלא של CloseUp, שמעמיד לרשותכם את כל היכולות של המערכת: ניהול לידים חכם, וואטסאפ נכנס ויוצא, קמפיינים, אוטומציות מבוססות AI וכלים לצוותי מכירות. הכל תחת ממשק אחד, בעברית, בלי מגבלות מלאכותיות שמאלצות אתכם לשדרג בהמשך.</p>
+    <p>המחיר שסגרנו — <strong>₪400 לחודש, כולל הכל</strong> — נבנה במיוחד עבורכם, ומאפשר לכם להתחיל לעבוד בגדול מהיום הראשון. בהמשך תוכלו לצרף גם חיבור מרכזייה כתוספת אופציונלית, אם וכשתרצו.</p>
+  </div>
+</section>
+
+<!-- ============ VALUE ============ -->
+<section class="value">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">הערך המהותי</div>
+      <h2>7 עד 10 נקודות מגע לכל עסקה. <span class="accent">מקום אחד.</span></h2>
+      <p>עד שעסקה נסגרת, לקוח עובר איתכם דרך וואטסאפ, שיחות טלפון ומיילים — לפעמים שבע, לפעמים עשר נקודות מגע. CloseUp מנקז את כולן לתמונה אחת רציפה, כך ששום ליד לא נופל בין הכיסאות ושום הקשר לא הולך לאיבוד.</p>
+    </div>
+
+    <div class="diagram reveal">
+      <!-- ===== desktop / wide: horizontal flow ===== -->
+      <svg class="dg-desktop" viewBox="0 0 920 300" role="img" aria-label="שלושה ערוצי תקשורת מתכנסים למערכת CloseUp אחת ומשם לעסקה שנסגרת">
+        <defs>
+          <linearGradient id="flowg" x1="1" y1="0" x2="0" y2="0">
+            <stop offset="0" stop-color="#6BA4FF"/><stop offset="1" stop-color="#1E6BFF"/>
+          </linearGradient>
+          <linearGradient id="hubg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#0A1638"/><stop offset="1" stop-color="#1E6BFF"/>
+          </linearGradient>
+          <filter id="hubshadow" x="-40%" y="-40%" width="180%" height="200%">
+            <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#1E6BFF" flood-opacity="0.35"/>
+          </filter>
+        </defs>
+
+        <!-- connectors: sources -> hub (dashed, animated) -->
+        <path class="cv-flow" stroke="url(#flowg)" d="M700,64  C648,64  610,150 566,150"/>
+        <path class="cv-flow" stroke="url(#flowg)" d="M700,150 L566,150"/>
+        <path class="cv-flow" stroke="url(#flowg)" d="M700,236 C648,236 610,150 566,150"/>
+
+        <!-- connector: hub -> outcome (solid, confident, one clear arrow to the result) -->
+        <path d="M400,150 L280,150" fill="none" stroke="#2FA866" stroke-width="3.4" stroke-linecap="round"/>
+        <polygon points="256,150 280,138 280,162" fill="#2FA866"/>
+
+        <!-- source nodes (right) -->
+        <g class="dg-node">
+          <rect x="700" y="38"  width="184" height="52" rx="14" fill="#F6F8FC" stroke="#E4E9F2"/>
+          <circle cx="856" cy="64" r="6" fill="#25D366"/>
+          <text class="dg-label" x="778" y="70" text-anchor="middle">וואטסאפ</text>
+
+          <rect x="700" y="124" width="184" height="52" rx="14" fill="#F6F8FC" stroke="#E4E9F2"/>
+          <circle cx="856" cy="150" r="6" fill="#1E6BFF"/>
+          <text class="dg-label" x="778" y="156" text-anchor="middle">שיחות טלפון</text>
+
+          <rect x="700" y="210" width="184" height="52" rx="14" fill="#F6F8FC" stroke="#E4E9F2"/>
+          <circle cx="856" cy="236" r="6" fill="#5B6779"/>
+          <text class="dg-label" x="778" y="242" text-anchor="middle">מייל</text>
+        </g>
+
+        <!-- hub (center) -->
+        <g class="dg-node">
+          <rect x="406" y="104" width="160" height="92" rx="18" fill="url(#hubg)" filter="url(#hubshadow)"/>
+          <text class="dg-hub" x="486" y="159" text-anchor="middle">CloseUp<tspan fill="#6BA4FF">.</tspan></text>
+          <text class="dg-cap" x="486" y="224" text-anchor="middle">כל האותות במקום אחד</text>
+        </g>
+
+        <!-- outcome (left) -->
+        <g class="dg-node">
+          <rect x="52" y="124" width="200" height="52" rx="14" fill="#EAF5EE" stroke="#2FA866"/>
+          <circle cx="224" cy="150" r="15" fill="#2FA866"/>
+          <path d="M217,150 l5,5 l9,-10" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text class="dg-out" x="132" y="156" text-anchor="middle">עסקה נסגרת</text>
+        </g>
+      </svg>
+
+      <!-- ===== mobile / narrow: vertical flow (larger, readable text) ===== -->
+      <svg class="dg-mobile" viewBox="0 0 360 560" role="img" aria-label="שלושה ערוצי תקשורת מתכנסים למערכת CloseUp אחת ומשם לעסקה שנסגרת">
+        <defs>
+          <linearGradient id="flowgV" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#6BA4FF"/><stop offset="1" stop-color="#1E6BFF"/>
+          </linearGradient>
+          <linearGradient id="hubgV" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#0A1638"/><stop offset="1" stop-color="#1E6BFF"/>
+          </linearGradient>
+          <filter id="hubshadowV" x="-40%" y="-40%" width="180%" height="200%">
+            <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#1E6BFF" flood-opacity="0.35"/>
+          </filter>
+        </defs>
+
+        <!-- connectors: sources -> hub (dashed, animated, downward) -->
+        <path class="cv-flow" stroke="url(#flowgV)" d="M60,74  C60,168 180,150 180,238"/>
+        <path class="cv-flow" stroke="url(#flowgV)" d="M180,74 L180,238"/>
+        <path class="cv-flow" stroke="url(#flowgV)" d="M300,74 C300,168 180,150 180,238"/>
+
+        <!-- connector: hub -> outcome (solid, one clear downward arrow) -->
+        <path d="M180,342 L180,450" fill="none" stroke="#2FA866" stroke-width="3.4" stroke-linecap="round"/>
+        <polygon points="180,474 168,450 192,450" fill="#2FA866"/>
+
+        <!-- source nodes (row on top) -->
+        <g class="dg-node">
+          <rect x="6"   y="28" width="108" height="46" rx="13" fill="#F6F8FC" stroke="#E4E9F2"/>
+          <circle cx="100" cy="51" r="5.5" fill="#25D366"/>
+          <text class="dg-label" x="56" y="57" text-anchor="middle">וואטסאפ</text>
+
+          <rect x="126" y="28" width="108" height="46" rx="13" fill="#F6F8FC" stroke="#E4E9F2"/>
+          <circle cx="220" cy="51" r="5.5" fill="#1E6BFF"/>
+          <text class="dg-label" x="176" y="57" text-anchor="middle">טלפון</text>
+
+          <rect x="246" y="28" width="108" height="46" rx="13" fill="#F6F8FC" stroke="#E4E9F2"/>
+          <circle cx="340" cy="51" r="5.5" fill="#5B6779"/>
+          <text class="dg-label" x="296" y="57" text-anchor="middle">מייל</text>
+        </g>
+
+        <!-- hub (center) -->
+        <g class="dg-node">
+          <rect x="80" y="238" width="200" height="104" rx="18" fill="url(#hubgV)" filter="url(#hubshadowV)"/>
+          <text class="dg-hub" x="180" y="298" text-anchor="middle">CloseUp<tspan fill="#6BA4FF">.</tspan></text>
+          <text class="dg-cap" x="180" y="324" text-anchor="middle">כל האותות במקום אחד</text>
+        </g>
+
+        <!-- outcome (bottom) -->
+        <g class="dg-node">
+          <rect x="70" y="476" width="220" height="54" rx="14" fill="#EAF5EE" stroke="#2FA866"/>
+          <circle cx="266" cy="503" r="15" fill="#2FA866"/>
+          <path d="M259,503 l5,5 l9,-10" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text class="dg-out" x="162" y="509" text-anchor="middle">עסקה נסגרת</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="pn">1</div>
+        <div>
+          <h3>כל נקודות המגע — במקום אחד</h3>
+          <p>וואטסאפ, שיחות ומיילים מתנקזים לכרטיס לקוח אחד. שום הודעה, שום שיחה ושום ליד לא נעלמים בין הערוצים.</p>
+        </div>
+      </div>
+      <div class="pillar reveal">
+        <div class="pn">2</div>
+        <div>
+          <h3>מעקב רציף לאורך כל המסע</h3>
+          <p>כל ליד נשאר על הרדאר מהפנייה הראשונה ועד הסגירה, עם משימות ותזכורות שלא נותנות לו להישכח.</p>
+        </div>
+      </div>
+      <div class="pillar reveal">
+        <div class="pn">3</div>
+        <div>
+          <h3>בקרה וניטור למנהל</h3>
+          <p>תובנות על איכות הביצוע של כל נציג — לראות מה עובד, היכן לידים נתקעים ואיפה כדאי להשקיע.</p>
+        </div>
+      </div>
+      <div class="pillar reveal">
+        <div class="pn">4</div>
+        <div>
+          <h3>יותר עסקאות שנסגרות</h3>
+          <p>תמלול אוטומטי של שיחות ותובנות AI שעוזרים לכל נציג לשפר את אחוזי הסגירה — לא רק לתעד את מה שקרה.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAPACITY ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">היקף המסלול</div>
+      <h2>מסלול <span class="accent">Business</span> — הגרסה המלאה.</h2>
+      <p>הקיבולת שמגיעה איתכם מהיום הראשון. מרווח שמספיק לצמיחה של שנים קדימה, בלי מגבלות שמפריעות לעבודה.</p>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><div class="num">25,000</div><div class="lbl">לידים במערכת</div></div>
+      <div class="stat reveal"><div class="num">10,000</div><div class="lbl">הודעות וואטסאפ בחודש</div></div>
+      <div class="stat reveal"><div class="num">2,000</div><div class="lbl">פעולות AI בחודש</div></div>
+      <div class="stat reveal"><div class="num">50</div><div class="lbl">משתמשים בצוות</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section style="background:#fff;border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">מה כלול</div>
+      <h2>כל הכלים. ממשק אחד.</h2>
+      <p>מסלול Business כולל את מלוא סט היכולות של CloseUp CRM — מניהול הליד הראשון ועד סגירת העסקה.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
+        <h3>ניהול לידים ופייפליין</h3>
+        <p>כל ליד, כל פנייה וכל שלב בעסקה במקום אחד — עם משימות, תזכורות והערות צמודות לכל לקוח.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-12 7.6L3 21l1.9-6A8.5 8.5 0 1 1 21 11.5Z"/></svg></div>
+        <h3>וואטסאפ נכנס ויוצא</h3>
+        <p>ניהול שיחות וואטסאפ מלא מתוך המערכת — קבלה, מענה ושליחה יזומה, בלי לצאת מה-CRM.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v3m0 12v3m9-9h-3M6 12H3m14.5-5.5-2 2m-7 7-2 2m0-11 2 2m7 7 2 2"/><circle cx="12" cy="12" r="3.2"/></svg></div>
+        <h3>תובנות AI חכמות</h3>
+        <p>הבינה המלאכותית של CloseUp מנתחת שיחות ולידים, מקדמת את מה שחם ומצביעה לכם על הצעד הבא.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 11 22 2l-9 19-2-8-8-2Z"/></svg></div>
+        <h3>קמפיינים ודיוור</h3>
+        <p>שליחת קמפיינים בוואטסאפ ובאימייל, פעולות מרובות (Bulk) ופנייה יזומה לקבוצות לקוחות.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></div>
+        <h3>Sales Booster</h3>
+        <p>כלי האצת מכירות שמסייעים לצוות לסגור מהר יותר — עם תיעדוף חכם וזרימות עבודה מובנות.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M2 12h3m14 0h3M12 2v3m0 14v3"/></svg></div>
+        <h3>הקלטת שיחות</h3>
+        <p>כל שיחה מוקלטת ונשמרת בכרטיס הלקוח — כלול במחיר הבסיס, ללא עלות נוספת.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/></svg></div>
+        <h3>ייבוא, ייצוא ו-API</h3>
+        <p>ייבוא נתונים מ-CSV, ייצוא בכל רגע וגישת API לחיבור מערכות — הנתונים תמיד שלכם.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 8 8 10 4.6-2 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>יומן ביקורת ובקרה</h3>
+        <p>Audit log מלא של פעולות במערכת — שקיפות ושליטה על מי עשה מה ומתי.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Z"/><path d="M11 18h2"/></svg></div>
+        <h3>עברית מלאה, RTL</h3>
+        <p>המערכת כולה בעברית ומימין לשמאל — נבנתה לצוות מכירות ישראלי, לא תרגום.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">התמחור</div>
+      <h2>מחיר אחד. הכל בפנים.</h2>
+      <p>מסלול חודשי, ללא התחייבות ארוכה. חיבור המרכזייה הוא תוספת אופציונלית שתוכלו לצרף בכל שלב.</p>
+    </div>
+
+    <div class="price-wrap">
+      <!-- MAIN -->
+      <div class="card main reveal">
+        <div class="tier">מסלול Business · חודשי</div>
+        <h3>CloseUp CRM</h3>
+        <div class="desc">הפלטפורמה המלאה — כל היכולות, בלי מגבלות.</div>
+        <div class="price"><span class="cur">₪</span><span class="amt">400</span><span class="per">/ לחודש</span></div>
+        <div class="price-note">כולל הכל · ללא עלויות נסתרות</div>
+        <ul class="inc">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#6BA4FF" stroke-width="2.4"><path d="m5 12 5 5L20 6"/></svg><span><b>מלוא מסלול Business</b> — כל הכלים שפורטו למעלה</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#6BA4FF" stroke-width="2.4"><path d="m5 12 5 5L20 6"/></svg><span>שימוש חופשי ומלא במערכת ה-CRM</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#6BA4FF" stroke-width="2.4"><path d="m5 12 5 5L20 6"/></svg><span><b>הקלטת שיחות</b> כלולה במחיר</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#6BA4FF" stroke-width="2.4"><path d="m5 12 5 5L20 6"/></svg><span>עד 50 משתמשים · 25,000 לידים</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#6BA4FF" stroke-width="2.4"><path d="m5 12 5 5L20 6"/></svg><span>עדכונים ותמיכה שוטפת</span></li>
+        </ul>
+      </div>
+
+      <!-- ADD-ON -->
+      <div class="card addon reveal">
+        <span class="opt-badge">תוספת אופציונלית</span>
+        <h3>חיבור מרכזייה</h3>
+        <div class="desc">מערכת טלפוניה מלאה, משולבת ישירות ב-CRM.</div>
+        <div class="price"><span class="cur">₪</span><span class="amt">190</span><span class="per">/ לחודש · עד 3 קווים</span></div>
+        <ul class="inc" style="margin-bottom:8px">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2.4"><path d="m5 12 5 5L20 6"/></svg><span><b>2,000 דקות</b> שיחות יוצאות</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2.4"><path d="m5 12 5 5L20 6"/></svg><span>שיחות נכנסות <b>ללא הגבלה</b></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2.4"><path d="m5 12 5 5L20 6"/></svg><span>הקלטות ללא הגבלה · שמירה עד 30 יום</span></li>
+        </ul>
+        <div class="addon-extra">כל קו נוסף מעבר ל-3: <b>₪40 לחודש</b>.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUMMARY ============ -->
+<section style="background:#fff;border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">סיכום מסחרי</div>
+      <h2>שקוף, על השולחן.</h2>
+    </div>
+    <div class="summary reveal">
+      <table>
+        <thead>
+          <tr><th>רכיב</th><th>פירוט</th><th style="text-align:left">עלות חודשית</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="item">מסלול CloseUp CRM · Business</td>
+            <td class="sub">כל היכולות + הקלטת שיחות · עד 50 משתמשים</td>
+            <td class="amt">₪400</td>
+          </tr>
+          <tr>
+            <td class="item">חיבור מרכזייה <span class="opt-tag">אופציונלי</span></td>
+            <td class="sub">עד 3 קווים · 2,000 דק' יוצאות · נכנסות ללא הגבלה</td>
+            <td class="amt">₪190</td>
+          </tr>
+          <tr>
+            <td class="item">קו נוסף <span class="opt-tag">אופציונלי</span></td>
+            <td class="sub">לכל קו מעבר ל-3</td>
+            <td class="amt">₪40</td>
+          </tr>
+          <tr class="total">
+            <td>סה"כ מסלול הבסיס</td>
+            <td class="sub" style="color:var(--mist)">חודשי · הכל כלול</td>
+            <td class="amt">₪400 / חודש</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--slate);font-size:13.5px;margin-top:16px" class="reveal">* המחירים אינם כוללים מע"מ. חיבור המרכזייה הוא תוספת אופציונלית ואינו נדרש להפעלת המערכת.</p>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="wrap reveal">
+    <div class="eyebrow" style="color:var(--sky)">מוכנים להתחיל?</div>
+    <h2 style="margin-top:14px">בואו נביא כל ליד <span class="accent">לפוקוס.</span></h2>
+    <p>אליק, נשמח לחבר את אוורסט מודולר ל-CloseUp ולהעלות אתכם לאוויר. אישור ההצעה — ואנחנו מתחילים בהקמה.</p>
+    <a href="#" class="btn">אישור ההצעה
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="M14 5l-7 7 7 7"/></svg>
+    </a>
+    <div class="validity">ההצעה בתוקף ל-30 יום ממועד המשלוח.</div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="logo">
+      <div>
+        <div class="wordmark" style="font-family:'Montserrat';font-weight:800;color:#fff;font-size:18px">CloseUp<span style="color:var(--sky)">.</span></div>
+        <div style="font-size:9px;letter-spacing:.24em;color:var(--slate);margin-top:2px">AI-POWERED CRM</div>
+      </div>
+    </div>
+    <div class="fnote">© 2026 CloseUp CRM · הצעת מחיר עבור אוורסט מודולר</div>
+  </div>
+</footer>
+
+<script>
+  /* reveal on scroll */
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*70)+'ms';io.observe(el)});
+
+  /* convergence particle field */
+  const cv=document.getElementById('field'),ctx=cv.getContext('2d');
+  let W,H,cx,cy,dots=[];
+  function resize(){
+    W=cv.width=cv.offsetWidth*devicePixelRatio;
+    H=cv.height=cv.offsetHeight*devicePixelRatio;
+    cx=W*0.72; cy=H*0.5;                 /* focus point (RTL: right-of-center) */
+    dots=[];
+    const n=Math.min(150,Math.floor(W*H/16000));
+    for(let i=0;i<n;i++){
+      const a=Math.random()*Math.PI*2, r=(0.15+Math.random()*0.85)*Math.max(W,H)*0.42;
+      dots.push({
+        a, r, base:r,
+        sp:0.02+Math.random()*0.05,
+        sz:(Math.random()*2+0.5)*devicePixelRatio,
+        c:Math.random(), tw:Math.random()*Math.PI*2
+      });
+    }
+  }
+  function tick(){
+    ctx.clearRect(0,0,W,H);
+    for(const d of dots){
+      d.a+=d.sp*0.006;
+      d.tw+=0.03;
+      const r=d.base+Math.sin(d.tw)*8*devicePixelRatio;
+      const x=cx+Math.cos(d.a)*r*1.35, y=cy+Math.sin(d.a)*r*0.9;
+      const alpha=0.15+d.c*0.55+Math.sin(d.tw)*0.1;
+      let col;
+      if(d.c>0.72)col='rgba(30,107,255,'+alpha+')';
+      else if(d.c>0.45)col='rgba(107,164,255,'+alpha+')';
+      else col='rgba(201,214,238,'+(alpha*0.7)+')';
+      ctx.beginPath();ctx.arc(x,y,d.sz,0,Math.PI*2);ctx.fillStyle=col;ctx.fill();
+    }
+    /* focus core */
+    const g=ctx.createRadialGradient(cx,cy,0,cx,cy,60*devicePixelRatio);
+    g.addColorStop(0,'rgba(30,107,255,.9)');g.addColorStop(1,'rgba(30,107,255,0)');
+    ctx.beginPath();ctx.arc(cx,cy,60*devicePixelRatio,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
+    ctx.beginPath();ctx.arc(cx,cy,7*devicePixelRatio,0,Math.PI*2);ctx.fillStyle='#1E6BFF';ctx.fill();
+    requestAnimationFrame(tick);
+  }
+  resize();tick();
+  window.addEventListener('resize',resize);
+</script>
+</body>
+</html>
